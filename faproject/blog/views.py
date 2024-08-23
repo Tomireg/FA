@@ -6,6 +6,7 @@ from django.views.generic import (
 )
 from django.http import HttpResponse
 from .models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.x
 def home(request):
@@ -23,9 +24,14 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post  
     
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']    
-
+    fields = ['title', 'content']
+     
+    #Overriding form_valid method 
+    def form_valid(self, form):
+        form.instance.author = self.request.user # Set the author on the form
+        return super().form_valid(form) # Validate form by running form_valid method from parent class.
+    
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
