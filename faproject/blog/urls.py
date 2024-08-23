@@ -3,7 +3,8 @@ from .views import (
     PostListView, 
     PostDetailView, 
     PostCreateView,
-    PostUpdateView # Imported the PostUpdateView we have just created.
+    PostUpdateView,
+    PostDeleteView #Imported the PostDeleteView class from views.py
 )
 from .import views
 
@@ -11,6 +12,7 @@ urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     path('post/<int:pk>', PostDetailView.as_view(), name='post-detail'),
     path('post/new/', PostCreateView.as_view(), name='post-create'),
-    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'), # Added the url pattern
+    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'), # Added in new url pattern
     path('about/',views.about, name='blog-about'),
 ]
