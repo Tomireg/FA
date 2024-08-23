@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Post
 from django.views.generic import ListView
 
-class PostlistView(ListView):
+class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html
     context_object_name = 'posts' #Updated here. Now the default name is set equal to 'posts'
