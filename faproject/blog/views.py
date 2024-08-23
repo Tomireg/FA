@@ -1,12 +1,13 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     ListView, 
     DetailView, 
-    CreateView
+    CreateView,
+    UpdateView # UpdateView import added
 )
 from django.http import HttpResponse
 from .models import Post
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.x
 def home(request):
@@ -28,10 +29,18 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
      
-    #Overriding form_valid method 
     def form_valid(self, form):
-        form.instance.author = self.request.user # Set the author on the form
-        return super().form_valid(form) # Validate form by running form_valid method from parent class.
+        form.instance.author = self.request.user
+        return super().form_valid(form)
     
+class PostUpdateView(LoginRequiredMixin, UpdateView): # New class created and UpdateView passed in.
+    model = Post
+    fields = ['title', 'content']
+     
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+         
+
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
