@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from .models import Post
 from django.views.generic import ListView
 
-
+class PostListView(ListView):
+	model = Post
+     
 # Create your views here.x
 def home(request):
     context = {
@@ -13,6 +15,3 @@ def home(request):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
-
-class PostListView(ListView)
-	model = Post
