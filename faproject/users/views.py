@@ -3,8 +3,13 @@ from django.contrib.auth.decorators import login_required #Added import here
 from django.contrib import messages
 from .forms import UserRegisterForm
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth import logout
 
 # Create your views here.
+def custom_logout(request):
+    logout(request)
+    return render(request, 'users/logout.html')
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
