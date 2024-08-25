@@ -5,7 +5,7 @@ from django.views.generic import (
     DetailView, 
     CreateView,
     UpdateView,
-    DeleteView # New import added here
+    DeleteView 
 )
 from django.http import HttpResponse
 from .models import Post
@@ -19,7 +19,7 @@ def home(request):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html
+    template_name = 'blog/home.html' 
     context_object_name = 'posts'
     ordering = ['-date_posted'] 
 
@@ -50,7 +50,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = "/" # Here we are redirecting the user back to the homepage after deleting a Post successfully
+    success_url = "/" 
     
     def test_func(self):
         post = self.get_object()

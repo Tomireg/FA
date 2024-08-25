@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load crispy_forms_tags %} <!-- Updated here to load crispy forms -->
+{% load crispy_forms_tags %} 
 {% block content %}
 <div class="content-section">
     <div class="media">
@@ -9,18 +9,15 @@
             <p class="text-secondary">{{ user.email }}</p>
         </div>
     </div>
-    <!-- FORM HERE -->
     <form method="POST" enctype="multipart/form-data">
-        <!-- Added an encoding type to save the image in the background -->
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Profile Info</legend> <!-- Updated ledgend to display Profile Info -->
-            {{ u_form|crispy }} <!-- Updated to load the user form and let crispy take care of the formating -->
-            {{ p_form|crispy }} <!-- Updated to load the profile form and let crispy take care of the formating -->
+            <legend class="border-bottom mb-4">Profile Info</legend> 
+            {{ u_form|crispy }} 
+            {{ p_form|crispy }} 
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Update</button>
-            <!-- Updated button to display Profile Info -->
         </div>
     </form>
 </div>

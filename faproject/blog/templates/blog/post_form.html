@@ -1,18 +1,17 @@
 {% extends "blog/base.html" %}
-{% load crispy_forms_tags %} <!-- Updated here to load crispy forms -->
+{% load crispy_forms_tags %} 
 {% block content %}
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Blog Post</legend> <!-- Text Changed here -->
+                <legend class="border-bottom mb-4">Blog Post</legend> 
                 
-                {{ form|crispy }} <!-- Updated to load the form and let crispy take care of the formating -->
+                {{ form|crispy }} 
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Post</button> <!-- Text Changed here -->
+                <button class="btn btn-outline-info" type="submit">Post</button> 
             </div>
         </form>
-        <!-- Changed here, div removed -->
     </div>
 {% endblock content %}

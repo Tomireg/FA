@@ -35,8 +35,8 @@ ALLOWED_HOSTS = ['fa-at7j.onrender.com']
 INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "users.apps.UsersConfig",
-    "crispy_forms", #Updated here
-    "crispy_bootstrap5", #Updated here
+    "crispy_forms", 
+    "crispy_bootstrap5", 
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
